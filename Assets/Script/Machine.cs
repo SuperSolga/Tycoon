@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Threading;
 using UnityEngine;
 using static CoffeeCup;
 
@@ -9,18 +11,22 @@ public class Machine : MonoBehaviour
     public GameObject coffeeCup;
     public Transform selfTransform;
 
-    // Start is called before the first frame update
+    public float timer = 10.0f;
+
     void Start()
     {
-        GameObject newCup = Instantiate(coffeeCup, selfTransform, false);
-        CoffeeCup script = newCup.GetComponent<CoffeeCup>();
-        script.Update();
+        InvokeRepeating("CoffeeSpawn", timer, timer);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        
     }
 
+    void CoffeeSpawn()
+    {
+        Instantiate(coffeeCup, selfTransform);
+    }
 }
