@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static Machine;
 
 public class CoffeeCup : MonoBehaviour
 {
     public bool isPresent = true;
+    Money money;
+    void Start()
+    {
+        money = GameObject.FindGameObjectWithTag("Manager").GetComponent<Money>();
+    }
 
     // Update is called once per frame
     public void Update()
@@ -21,6 +25,7 @@ public class CoffeeCup : MonoBehaviour
         if (transform.position.x < -10){
             Destroy(gameObject);
             isPresent = false;
+            money.AddMoney(1.5f);
         }
     }
 }
