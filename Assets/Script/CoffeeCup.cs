@@ -11,11 +11,16 @@ public class CoffeeCup : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        while (transform.position.x < -5)
-        {
-            transform.position += new Vector3(transform.position.x + 0.2f, 0, 0);
+        Move();
+    }
+
+    public void Move()
+    {
+        transform.Translate(Vector3.left * 1f * Time.deltaTime);
+        if (transform.position.x < -10){
+            Destroy(gameObject);
         }
     }
 }
