@@ -15,5 +15,7 @@ MonoBehaviour:
   machineName: Machine1
   level: 1
   color: {fileID: 2100000, guid: bbf65bbcf84011645a7055838deedcdb, type: 2}
+  model: {fileID: 1453585108078186371, guid: 48004f15d31f9ee49bcbd4e7fca2c5bc, type: 3}
   timePerCoffee: 10
   numberCoffee: 1
+  position: {x: 0, y: 0.35, z: 0}

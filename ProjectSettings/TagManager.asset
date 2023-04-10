@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Manager
+  - Machinable
+  - Support
   layers:
   - Default
   - TransparentFX

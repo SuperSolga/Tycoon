@@ -20,7 +20,6 @@ public class CoffeeCup : MonoBehaviour
 
     public void Move()
     {
-        ;
         transform.Translate(Vector3.left * 1f * Time.deltaTime);
         if (transform.position.x < -10){
             Destroy(gameObject);
