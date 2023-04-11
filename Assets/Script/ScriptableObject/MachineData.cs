@@ -15,8 +15,9 @@ public class MachineData : ScriptableObject
     public int numberCoffee;
     public Vector3 position;
 
-    public void Spawn()
+
+    public void Spawn(int indexMachine)
     {
-        Instantiate(model, GameObject.FindGameObjectWithTag("Support").transform.position + position, Quaternion.Euler(0, 0, 0), GameObject.FindGameObjectWithTag("Support").transform);
+        Instantiate(model, GameObject.FindGameObjectsWithTag("Support")[indexMachine].transform.position + position, Quaternion.Euler(0, 0, 0), GameObject.FindGameObjectsWithTag("Support")[indexMachine].transform);
     }
 }
