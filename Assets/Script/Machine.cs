@@ -3,17 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Machine : MonoBehaviour
 {
-    public GameObject coffeeCup;
     public Transform selfTransform;
-    public Vector3 coffeePosition;
 
     public bool machineOn = false;
+    private bool tested = false;
+    private bool deleted = false;
+    public int index;
 
     public MachineData machine;
+    private CoffeeCup coffeeCup;
 
     public float startTimer = 1.0f;
     public float timer = 10.0f;
@@ -21,24 +24,50 @@ public class Machine : MonoBehaviour
     public int machineIndex;
 
     void Start()
-    {
+    { 
         if (machine != null && machineOn)
         {
-            machine.Spawn(machineIndex);
-            InvokeRepeating("CoffeeSpawn", startTimer, machine.timePerCoffee);
-        } else
-        {
-            Debug.Log("no machine set");
+            SetMachine();
+            coffeeCup = GameObject.FindGameObjectWithTag("Machine").GetComponent<CoffeeCup>();
+            coffeeCup.index = index;
+            tested = true;
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (machine != null && machineOn && !tested)
+        {
+            SetMachine();
+            tested = true;
+            deleted = false;
+        }
+        if (!machineOn && tested && !deleted) 
+        { 
+            DeleteMachine();
+            deleted = true;
+            tested = false;
+        }
+
+    }
+
+    void SetMachine()
+    {
+        machine.Spawn(machineIndex);
+        InvokeRepeating("CoffeeSpawn", startTimer, machine.timePerCoffee);
+    }
+
+    void DeleteMachine()
+    {
+        Destroy(transform.GetChild(2).GetChild(0).gameObject);
+        CancelInvoke();
+        Debug.Log("deleted");
     }
 
     void CoffeeSpawn()
     {
-        Instantiate(coffeeCup, selfTransform.Find("MachineSupport").transform.position + coffeePosition, Quaternion.Euler(0, 0, 0), selfTransform.Find("MachineSupport"));
+        coffeeCup.coffee.CoffeeSpawn(machine,selfTransform, coffeeCup.index);
     }
 }

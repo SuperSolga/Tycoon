@@ -1175,10 +1175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148c0618505213646925530078e115ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeCup: {fileID: 8794689327771723203, guid: 61e8dbbe5e5874c4396dfff40a207e1d, type: 3}
   selfTransform: {fileID: 693076692}
-  coffeePosition: {x: 0, y: -0.2, z: 0}
   machineOn: 1
+  index: 0
   machine: {fileID: 11400000, guid: 1e9c11987c6f2f6479a187da8dfcbc32, type: 2}
   startTimer: 1
   timer: 10
@@ -2475,11 +2474,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148c0618505213646925530078e115ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeCup: {fileID: 8794689327771723203, guid: 61e8dbbe5e5874c4396dfff40a207e1d, type: 3}
   selfTransform: {fileID: 1805007142}
-  coffeePosition: {x: 0, y: -0.2, z: 0}
   machineOn: 1
-  machine: {fileID: 11400000, guid: 1e9c11987c6f2f6479a187da8dfcbc32, type: 2}
+  index: 0
+  machine: {fileID: 11400000, guid: 5cfcfd021f85d7448bcde6e8750fb546, type: 2}
   startTimer: 1
   timer: 10
   machineIndex: 2
@@ -2530,10 +2528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148c0618505213646925530078e115ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeCup: {fileID: 8794689327771723203, guid: 61e8dbbe5e5874c4396dfff40a207e1d, type: 3}
   selfTransform: {fileID: 1807629016}
-  coffeePosition: {x: 0, y: -0.2, z: 0}
-  machineOn: 1
+  machineOn: 0
+  index: 0
   machine: {fileID: 11400000, guid: 1e9c11987c6f2f6479a187da8dfcbc32, type: 2}
   startTimer: 1
   timer: 10
@@ -2859,11 +2856,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148c0618505213646925530078e115ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeCup: {fileID: 8794689327771723203, guid: 61e8dbbe5e5874c4396dfff40a207e1d, type: 3}
   selfTransform: {fileID: 2095089679}
-  coffeePosition: {x: 0, y: -0.2, z: 0}
   machineOn: 0
-  machine: {fileID: 0}
+  index: 0
+  machine: {fileID: 11400000, guid: 1e9c11987c6f2f6479a187da8dfcbc32, type: 2}
   startTimer: 1
   timer: 10
   machineIndex: 3

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1453585108078186383}
   - component: {fileID: 1453585108078186380}
   - component: {fileID: 1453585108078186381}
-  - component: {fileID: 1453585108078186382}
+  - component: {fileID: 5696537308570210700}
   m_Layer: 0
   m_Name: Machine
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1453585108078186382
+--- !u!114 &5696537308570210700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,9 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1453585108078186371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 148c0618505213646925530078e115ea, type: 3}
+  m_Script: {fileID: 11500000, guid: f5e8ce237a8acd14f904b0bc0c1d1af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeCup: {fileID: 8794689327771723203, guid: 61e8dbbe5e5874c4396dfff40a207e1d, type: 3}
-  selfTransform: {fileID: 1453585108078186370}
-  timer: 10
+  coffee: {fileID: 11400000, guid: 13354405f6e0eb84da3251d42fb8be7b, type: 2}
