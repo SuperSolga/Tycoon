@@ -12,6 +12,8 @@ public class CoffeeCup : MonoBehaviour
     public int index;
     private int numberCoffee;
 
+    public float conveyorSpeed = 1.0f;
+
     void Start()
     {
         coffee.list.Clear();
@@ -36,22 +38,12 @@ public class CoffeeCup : MonoBehaviour
         {
             coffee.isPresent = true;
         }
-        Debug.Log(coffee.isPresent);
         if (coffee.isPresent)
         {
-            Debug.Log(index);
-            if (!coffee.tested[index])
+            for (int i = 1; i <= numberCoffee; i++)
             {
-                for (int i = coffee.list.Count + 1; i <= numberCoffee; i++)
-                {
-                    Debug.Log(transform.parent.GetChild(i).gameObject);
-                    coffee.list.Add(transform.parent.GetChild(i).gameObject);
-                }
-                coffee.tested[index] = true;
+                    coffee.Move(transform.parent.GetChild(i).transform, transform.parent.GetChild(i).gameObject, conveyorSpeed);
             }
-            coffee.Move();
-            Debug.Log(coffee.list.Count);
-            Debug.Log(coffee.tested[index]);
         }
     }
 }

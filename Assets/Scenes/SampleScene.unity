@@ -1177,7 +1177,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfTransform: {fileID: 693076692}
   machineOn: 1
-  index: 0
   machine: {fileID: 11400000, guid: 1e9c11987c6f2f6479a187da8dfcbc32, type: 2}
   startTimer: 1
   timer: 10
@@ -2476,7 +2475,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfTransform: {fileID: 1805007142}
   machineOn: 1
-  index: 0
   machine: {fileID: 11400000, guid: 5cfcfd021f85d7448bcde6e8750fb546, type: 2}
   startTimer: 1
   timer: 10
@@ -2529,8 +2527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfTransform: {fileID: 1807629016}
-  machineOn: 0
-  index: 0
+  machineOn: 1
   machine: {fileID: 11400000, guid: 1e9c11987c6f2f6479a187da8dfcbc32, type: 2}
   startTimer: 1
   timer: 10
@@ -2858,7 +2855,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfTransform: {fileID: 2095089679}
   machineOn: 0
-  index: 0
   machine: {fileID: 11400000, guid: 1e9c11987c6f2f6479a187da8dfcbc32, type: 2}
   startTimer: 1
   timer: 10

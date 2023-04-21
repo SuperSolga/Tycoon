@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "CoffeeData", menuName = "Tycoon/Coffee")]
 
@@ -8,6 +9,8 @@ public class CoffeeData : ScriptableObject
 {
     public float price;
     public GameObject model;
+
+    public float conveyorSpeed = 1f;
     
     [HideInInspector]
     public bool isPresent = false;
@@ -26,24 +29,14 @@ public class CoffeeData : ScriptableObject
         }
         tested[j] = false;
     }
-    public void Move()
+    public void Move(Transform trans, GameObject coffeeeCup, float speed)
     {
-        int i = 0;
-        Debug.Log(list[0]);
-        Debug.Log(list.Count);
-        foreach(GameObject movable in list)
-        {
-            movable.transform.Translate(Vector3.left * Time.deltaTime);
-            Debug.Log(movable.transform.position.x);
+        trans.Translate(Vector3.left * Time.deltaTime * speed);
 
-            if (movable.transform.position.x < -10)
+        if (trans.transform.position.x < -10)
             {
-                Debug.Log("coffee destroyed");
-                list.RemoveAt(i);
-                Destroy(movable);
+                Destroy(coffeeeCup);
                 money.AddMoney(price);
-            }
-            i++;
-        }
-    }
+         }
+     }
 }

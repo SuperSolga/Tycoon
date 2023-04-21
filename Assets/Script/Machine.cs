@@ -11,9 +11,9 @@ public class Machine : MonoBehaviour
     public Transform selfTransform;
 
     public bool machineOn = false;
-    private bool tested = false;
+    private bool present = false;
     private bool deleted = false;
-    public int index;
+
 
     public MachineData machine;
     private CoffeeCup coffeeCup;
@@ -28,9 +28,8 @@ public class Machine : MonoBehaviour
         if (machine != null && machineOn)
         {
             SetMachine();
-            coffeeCup = GameObject.FindGameObjectWithTag("Machine").GetComponent<CoffeeCup>();
-            coffeeCup.index = index;
-            tested = true;
+            coffeeCup = transform.GetChild(2).GetChild(0).GetComponent<CoffeeCup>();
+            present = true;
         }
 
     }
@@ -38,32 +37,39 @@ public class Machine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (machine != null && machineOn && !tested)
+        if (machine != null && machineOn && !present)
         {
             SetMachine();
-            tested = true;
+            present = true;
             deleted = false;
+            transform.GetChild(2).GetChild(transform.GetChild(2).childCount - 1).SetSiblingIndex(0);
         }
-        if (!machineOn && tested && !deleted) 
+        if (!machineOn && present && !deleted) 
         { 
             DeleteMachine();
             deleted = true;
-            tested = false;
+            present = false;
         }
-
+        if (machine != null && present)
+        { 
+            coffeeCup.index = machineIndex;
+        }
     }
 
     void SetMachine()
     {
         machine.Spawn(machineIndex);
         InvokeRepeating("CoffeeSpawn", startTimer, machine.timePerCoffee);
+        coffeeCup = transform.GetChild(2).GetChild(0).GetComponent<CoffeeCup>();
     }
 
     void DeleteMachine()
     {
-        Destroy(transform.GetChild(2).GetChild(0).gameObject);
-        CancelInvoke();
-        Debug.Log("deleted");
+        for (int i = 0; i < transform.GetChild(2).childCount; i++)
+        {
+            Destroy(transform.GetChild(2).GetChild(i).gameObject);
+            CancelInvoke();
+        }
     }
 
     void CoffeeSpawn()
