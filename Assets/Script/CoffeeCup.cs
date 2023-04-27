@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class CoffeeCup : MonoBehaviour
 {
+    [HideInInspector]
     public CoffeeData coffee;
 
     public int index;

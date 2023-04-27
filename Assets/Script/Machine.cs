@@ -17,6 +17,7 @@ public class Machine : MonoBehaviour
 
     public MachineData machine;
     private CoffeeCup coffeeCup;
+    public CoffeeData coffeeData;
 
     public float startTimer = 1.0f;
     public float timer = 10.0f;
@@ -29,6 +30,7 @@ public class Machine : MonoBehaviour
         {
             SetMachine();
             coffeeCup = transform.GetChild(2).GetChild(0).GetComponent<CoffeeCup>();
+            coffeeCup.coffee = coffeeData;
             present = true;
         }
 
