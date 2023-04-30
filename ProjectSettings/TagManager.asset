@@ -8,6 +8,7 @@ TagManager:
   - Machinable
   - Support
   - Machine
+  - Selectable
   layers:
   - Default
   - TransparentFX

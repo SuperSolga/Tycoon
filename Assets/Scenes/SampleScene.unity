@@ -1437,6 +1437,74 @@ Transform:
   m_Father: {fileID: 1807629016}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &958071414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958071417}
+  - component: {fileID: 958071416}
+  - component: {fileID: 958071415}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &958071415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958071414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &958071416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958071414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &958071417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958071414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,7 +2543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfTransform: {fileID: 1805007142}
-  machineOn: 1
+  machineOn: 0
   machine: {fileID: 11400000, guid: 5cfcfd021f85d7448bcde6e8750fb546, type: 2}
   coffeeData: {fileID: 11400000, guid: 13354405f6e0eb84da3251d42fb8be7b, type: 2}
   startTimer: 1
@@ -2529,7 +2597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfTransform: {fileID: 1807629016}
-  machineOn: 1
+  machineOn: 0
   machine: {fileID: 11400000, guid: 1e9c11987c6f2f6479a187da8dfcbc32, type: 2}
   coffeeData: {fileID: 11400000, guid: fb3a2d4183de5ae42acde03c5e9f3192, type: 2}
   startTimer: 1
@@ -2584,7 +2652,7 @@ GameObject:
   - component: {fileID: 1942667936}
   m_Layer: 0
   m_Name: Plate
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2774,6 +2842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2087461394}
   - component: {fileID: 2087461393}
+  - component: {fileID: 2087461395}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Manager
@@ -2809,6 +2878,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2087461395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087461392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd0cef84da65504f8fba050bb057b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: a68b2ba0889e4604e96eb7c73e1ebe1e, type: 2}
+  selectionMaterial: {fileID: 2100000, guid: f5017d46cd8101643a1453bbe6691bd5, type: 2}
 --- !u!1 &2095089678
 GameObject:
   m_ObjectHideFlags: 0
