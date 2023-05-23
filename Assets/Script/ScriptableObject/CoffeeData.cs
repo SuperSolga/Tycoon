@@ -10,6 +10,8 @@ public class CoffeeData : ScriptableObject
     public float price;
     public GameObject model;
 
+    public float size;
+
     public float conveyorSpeed = 1f;
     
     [HideInInspector]
@@ -20,7 +22,7 @@ public class CoffeeData : ScriptableObject
     public bool[] tested = new bool[4];
 
 
-    public void CoffeeSpawn(MachineData machine, Transform transform, int j)
+    public void CoffeeSpawn(MachineData machine, Transform transform, int j, GameObject model)
     {
         for (int i = 0; i < machine.numberCoffee; i++)
         {

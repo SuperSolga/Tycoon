@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CoffeeBase
   m_EditorClassIdentifier: 
   price: 1.5
-  model: {fileID: 9185879462996277404, guid: 61e8dbbe5e5874c4396dfff40a207e1d, type: 3}
+  model: {fileID: 557942264464818151, guid: 3016aed77de19b743921a6de36f208ca, type: 3}
   conveyorSpeed: 1
   isPresent: 1
   money: {fileID: 0}

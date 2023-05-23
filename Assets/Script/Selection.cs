@@ -40,9 +40,7 @@ public class Selection : MonoBehaviour
                 Debug.Log(highlight.GetChild(0).gameObject);
             }
             catch (UnityException)
-            {
-                Debug.Log("no child");
-            }
+            {}
             if (highlight.CompareTag("Selectable") && highlight != selection)
             {
                 try

@@ -93,8 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 374153615469523032}
   - component: {fileID: -6860577891282725138}
-  - component: {fileID: -3234489851840689631}
   - component: {fileID: 6017045101076203076}
+  - component: {fileID: -3234489851840689631}
   - component: {fileID: 1989958334424443095}
   m_Layer: 0
   m_Name: coffee machine lvl4
@@ -134,6 +134,22 @@ MonoBehaviour:
   coffee: {fileID: 11400000, guid: 13354405f6e0eb84da3251d42fb8be7b, type: 2}
   index: 0
   conveyorSpeed: 1
+--- !u!54 &6017045101076203076
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7511454720083356675}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &-3234489851840689631
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -176,22 +192,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &6017045101076203076
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7511454720083356675}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &1989958334424443095
 BoxCollider:
   m_ObjectHideFlags: 0

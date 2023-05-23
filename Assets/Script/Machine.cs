@@ -19,6 +19,8 @@ public class Machine : MonoBehaviour
     private CoffeeCup coffeeCup;
     public CoffeeData coffeeData;
 
+    GameObject model;
+
     public float startTimer = 1.0f;
     public float timer = 10.0f;
 
@@ -32,6 +34,10 @@ public class Machine : MonoBehaviour
             coffeeCup = transform.GetChild(2).GetChild(0).GetComponent<CoffeeCup>();
             coffeeCup.coffee = coffeeData;
             present = true;
+        }
+        if (machine != null)
+        {
+            model = coffeeData.model;
         }
 
     }
@@ -62,7 +68,7 @@ public class Machine : MonoBehaviour
     {
         machine.Spawn(machineIndex);
         InvokeRepeating("CoffeeSpawn", startTimer, machine.timePerCoffee);
-        coffeeCup = transform.GetChild(2).GetChild(0).GetComponent<CoffeeCup>();
+        coffeeCup = transform.GetChild(0).GetChild(0).GetComponent<CoffeeCup>();
     }
 
     void DeleteMachine()
@@ -76,6 +82,6 @@ public class Machine : MonoBehaviour
 
     void CoffeeSpawn()
     {
-        coffeeCup.coffee.CoffeeSpawn(machine,selfTransform, coffeeCup.index);
+        coffeeCup.coffee.CoffeeSpawn(machine, selfTransform, coffeeCup.index, model);
     }
 }

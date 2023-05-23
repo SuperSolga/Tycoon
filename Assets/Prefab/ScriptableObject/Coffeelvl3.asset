@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c605f9f34ffca4e8179fc1b3c6bdc7, type: 3}
+  m_Name: Coffeelvl3
+  m_EditorClassIdentifier: 
+  price: 3.5
+  model: {fileID: 5365582243053187142, guid: 787352c0453ac7e4a8457514f12546d7, type: 3}
+  conveyorSpeed: 1
+  isPresent: 0
+  money: {fileID: 0}
+  list: []
+  tested: 00000000
