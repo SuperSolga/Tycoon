@@ -15,6 +15,8 @@ public class Selection : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
 
+    private Machine machine;
+
     void Update()
     {
         // Highlight
@@ -29,18 +31,13 @@ public class Selection : MonoBehaviour
                 highlight.GetComponent<MeshRenderer>().sharedMaterial = originalMaterialHighlight;
             }
             highlight = null;
-            Debug.Log("materiel récup");
+            //Debug.Log("materiel récup");
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) //Make sure you have EventSystem in the hierarchy before using EventSystem
         {
             highlight = raycastHit.transform;
-            Debug.Log(highlight.gameObject);
-            try{
-                Debug.Log(highlight.GetChild(0).gameObject);
-            }
-            catch (UnityException)
-            {}
+
             if (highlight.CompareTag("Selectable") && highlight != selection)
             {
                 try
@@ -83,6 +80,13 @@ public class Selection : MonoBehaviour
                     }
                 }
                 selection = raycastHit.transform;
+                if (selection != null)
+                {
+                    machine = selection.gameObject.transform.parent.parent.GetComponent<Machine>();
+                    machine.upgrade.enabled = true;
+                    machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerCoffee, machine.machine[machine.machineLvl].numberCoffee);
+                    Debug.Log(machine.upgrade.enabled);
+                }
                 try
                 {
                     if (selection.GetChild(0).GetComponent<MeshRenderer>().material != selectionMaterial)
@@ -119,6 +123,12 @@ public class Selection : MonoBehaviour
             }
         }
 
+    }
+
+    public void Unselect()
+    {
+        selection = null;
+        highlight= null;
     }
 
 }
