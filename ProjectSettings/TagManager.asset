@@ -9,6 +9,7 @@ TagManager:
   - Support
   - Machine
   - Selectable
+  - UpgradeUI
   layers:
   - Default
   - TransparentFX

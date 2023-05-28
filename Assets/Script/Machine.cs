@@ -23,6 +23,9 @@ public class Machine : MonoBehaviour
 
     private CoffeeCup coffeeCup;
     public CoffeeData coffeeData;
+    private float coffeeYdrift;
+
+    private Selection select;
 
     GameObject model;
 
@@ -37,6 +40,8 @@ public class Machine : MonoBehaviour
     [HideInInspector]
     public UpgradeMenu upgradeMenu;
 
+    private float a;
+
     void Start()
     {
         upgrade.enabled = false;
@@ -48,10 +53,16 @@ public class Machine : MonoBehaviour
             present = true;
             Debug.Log("spawned");
 
+            a = machine[0].position[0];
+            Debug.Log(a);
+
             model = coffeeData.model;
+
+            Debug.Log("instance prete" + machine[machineLvl].coffeePositions[0]);
 
             upgradeMenu = upgrade.GetComponent<UpgradeMenu>();
 
+            select = GameObject.FindGameObjectWithTag("Manager").GetComponent<Selection>();
         }
 
     }
@@ -103,7 +114,8 @@ public class Machine : MonoBehaviour
 
     void CoffeeSpawn()
     {
-        coffeeCup.coffee.CoffeeSpawn(machine[machineLvl], selfTransform, coffeeCup.index, model);
+        Debug.Log(machine[machineLvl]);
+        coffeeCup.coffee.CoffeeSpawn(machine[machineLvl], transform, coffeeCup.index, model);
     }
 
     public void UpgradeMachine()
@@ -111,8 +123,17 @@ public class Machine : MonoBehaviour
         DeleteMachine();
         Debug.Log("deleted");
         machineLvl += 1;
-        SetMachine();
-        Debug.Log("upgraded");
+        try
+        {
+            SetMachine();
+            Debug.Log("upgraded");
+        }
+        catch (IndexOutOfRangeException)
+        {
+            Debug.Log("machine Lvl max");
+            machineLvl -= 1;
+            SetMachine();
+        }
     }
 
     public void CloseMenu()
@@ -120,4 +141,12 @@ public class Machine : MonoBehaviour
         upgrade.enabled= false;
     }
 
+    //Select the new machine once it's upgrade, more simple to close the menu after that
+    public void SelectNew()
+    {
+        Debug.Log(transform);
+        Debug.Log(select);
+        select.highlight = transform.GetChild(0).GetChild(0);
+        select.selection = transform.GetChild(0).GetChild(0);
+    }
 }

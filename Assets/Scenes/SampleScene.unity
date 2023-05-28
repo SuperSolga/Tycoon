@@ -480,6 +480,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1807629017}
+        m_TargetAssemblyTypeName: Machine, Assembly-CSharp
+        m_MethodName: SelectNew
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &269415881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2367,7 +2379,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5cfcfd021f85d7448bcde6e8750fb546, type: 2}
   - {fileID: 11400000, guid: 0392957eaf07cfa4498a41b00dfc7afe, type: 2}
   machineLvl: 0
-  coffeeData: {fileID: 11400000, guid: fb3a2d4183de5ae42acde03c5e9f3192, type: 2}
+  coffeeData: {fileID: 11400000, guid: efeb3c66559378a46863b8f4fa6d3ce0, type: 2}
   startTimer: 1
   timer: 10
   machineIndex: 0
@@ -2520,7 +2532,7 @@ GameObject:
   - component: {fileID: 2061815275}
   m_Layer: 5
   m_Name: Upgrade1
-  m_TagString: Untagged
+  m_TagString: UpgradeUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2764,6 +2776,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a68b2ba0889e4604e96eb7c73e1ebe1e, type: 2}
   selectionMaterial: {fileID: 2100000, guid: f5017d46cd8101643a1453bbe6691bd5, type: 2}
+  highlight: {fileID: 0}
+  selection: {fileID: 0}
 --- !u!1 &2095089678
 GameObject:
   m_ObjectHideFlags: 0

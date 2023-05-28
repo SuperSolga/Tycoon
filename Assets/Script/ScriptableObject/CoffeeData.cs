@@ -21,13 +21,18 @@ public class CoffeeData : ScriptableObject
     public List<GameObject> list;
     public bool[] tested = new bool[4];
 
+    public float YSize;
+
 
     public void CoffeeSpawn(MachineData machine, Transform transform, int j, GameObject model)
     {
+        Debug.Log(machine.coffeePositions[0]);
         for (int i = 0; i < machine.numberCoffee; i++)
         {
+            Vector3 a = transform.Find("MachineSupport").transform.position + new Vector3(machine.coffeePositions[i][0], YSize, machine.coffeePositions[i][2]);
+            Debug.Log(a);
             Instantiate(model, transform.Find("MachineSupport").transform.position
-                + machine.coffeePositions[i], Quaternion.Euler(0, 0, 0), transform.Find("MachineSupport"));
+                + new Vector3(machine.coffeePositions[i][0], YSize, machine.coffeePositions[i][2]), Quaternion.Euler(0, 0, 0), transform.Find("MachineSupport"));
         }
         tested[j] = false;
     }

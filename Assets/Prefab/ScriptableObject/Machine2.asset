@@ -19,5 +19,6 @@ MonoBehaviour:
   timePerCoffee: 5
   numberCoffee: 1
   position: {x: 0, y: 0.35, z: 0}
+  Zdirft: []
   coffeePositions:
-  - {x: -0.5, y: 0, z: 0}
+  - {x: -0.5, y: 0.173, z: 0}

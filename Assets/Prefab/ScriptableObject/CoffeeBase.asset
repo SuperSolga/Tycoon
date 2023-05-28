@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 1.5
   model: {fileID: 557942264464818151, guid: 3016aed77de19b743921a6de36f208ca, type: 3}
+  size: 0
   conveyorSpeed: 1
   isPresent: 1
   money: {fileID: 0}
   list: []
   tested: 00000000
+  YSize: 0.108

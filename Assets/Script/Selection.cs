@@ -11,8 +11,8 @@ public class Selection : MonoBehaviour
 
     private Material originalMaterialHighlight;
     private Material originalMaterialSelection;
-    private Transform highlight;
-    private Transform selection;
+    public Transform highlight;
+    public Transform selection;
     private RaycastHit raycastHit;
 
     private Machine machine;
@@ -107,7 +107,6 @@ public class Selection : MonoBehaviour
             }
             else
             {
-
                 if (selection)
                 {
                     try
@@ -121,14 +120,13 @@ public class Selection : MonoBehaviour
                     selection = null;
                 }
             }
+            if (selection == null)
+            {
+                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("UpgradeUI"))
+                {
+                    obj.GetComponent<Canvas>().enabled = false;
+                }
+            }
         }
-
     }
-
-    public void Unselect()
-    {
-        selection = null;
-        highlight= null;
-    }
-
 }
