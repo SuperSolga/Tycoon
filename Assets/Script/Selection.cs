@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -83,8 +84,17 @@ public class Selection : MonoBehaviour
                 if (selection != null)
                 {
                     machine = selection.gameObject.transform.parent.parent.GetComponent<Machine>();
+                    Debug.Log(machine);
                     machine.upgrade.enabled = true;
-                    machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerCoffee, machine.machine[machine.machineLvl].numberCoffee);
+                    try
+                    {
+                        machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerCoffee, machine.machine[machine.machineLvl].numberCoffee, machine.machine[machine.machineLvl + 1].upgradePrice);
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerCoffee, machine.machine[machine.machineLvl].numberCoffee, 0);
+                    }
+                    
                     Debug.Log(machine.upgrade.enabled);
                 }
                 try
@@ -92,7 +102,7 @@ public class Selection : MonoBehaviour
                     if (selection.GetChild(0).GetComponent<MeshRenderer>().material != selectionMaterial)
                     {
                         originalMaterialSelection = originalMaterialHighlight;
-                        selection.GetChild(0).GetComponent<MeshRenderer>().material = selectionMaterial;
+                        selection.GetChild(0).GetComponent<MeshRenderer>().material = originalMaterialSelection;
                     }
                 }
                 catch (UnityException)
@@ -100,7 +110,7 @@ public class Selection : MonoBehaviour
                     if (selection.GetComponent<MeshRenderer>().material != selectionMaterial)
                     {
                         originalMaterialSelection = originalMaterialHighlight;
-                        selection.GetComponent<MeshRenderer>().material = selectionMaterial;
+                        selection.GetComponent<MeshRenderer>().material = originalMaterialSelection;
                     }
                 }
                 highlight = null;

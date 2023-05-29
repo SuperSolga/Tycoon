@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c605f9f34ffca4e8179fc1b3c6bdc7, type: 3}
   m_Name: Coffeelvl3
   m_EditorClassIdentifier: 
-  price: 3.5
+  price: 4
   model: {fileID: 5365582243053187142, guid: 787352c0453ac7e4a8457514f12546d7, type: 3}
   size: 0
   conveyorSpeed: 1

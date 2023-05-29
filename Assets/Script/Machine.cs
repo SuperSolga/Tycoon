@@ -11,8 +11,6 @@ using UnityEngine.UI;
 
 public class Machine : MonoBehaviour
 {
-    public Transform selfTransform;
-
     public bool machineOn = false;
     private bool present = false;
     private bool deleted = false;
@@ -23,7 +21,6 @@ public class Machine : MonoBehaviour
 
     private CoffeeCup coffeeCup;
     public CoffeeData coffeeData;
-    private float coffeeYdrift;
 
     private Selection select;
 
@@ -40,8 +37,6 @@ public class Machine : MonoBehaviour
     [HideInInspector]
     public UpgradeMenu upgradeMenu;
 
-    private float a;
-
     void Start()
     {
         upgrade.enabled = false;
@@ -52,9 +47,6 @@ public class Machine : MonoBehaviour
             coffeeCup.coffee = coffeeData;
             present = true;
             Debug.Log("spawned");
-
-            a = machine[0].position[0];
-            Debug.Log(a);
 
             model = coffeeData.model;
 
@@ -79,6 +71,8 @@ public class Machine : MonoBehaviour
         {
             Debug.Log("en spawn !");
             SetMachine();
+            upgradeMenu = upgrade.GetComponent<UpgradeMenu>();
+            select = GameObject.FindGameObjectWithTag("Manager").GetComponent<Selection>();
             present = true;
             deleted = false;
             transform.GetChild(numberHierarchy).GetChild(transform.GetChild(numberHierarchy).childCount - 1).SetSiblingIndex(0);
@@ -127,6 +121,14 @@ public class Machine : MonoBehaviour
         {
             SetMachine();
             Debug.Log("upgraded");
+            try
+            {
+                upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerCoffee, machine[machineLvl].numberCoffee, machine[machineLvl + 1].upgradePrice);
+            }
+            catch (IndexOutOfRangeException)
+            {
+                upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerCoffee, machine[machineLvl].numberCoffee, 0);
+            }
         }
         catch (IndexOutOfRangeException)
         {

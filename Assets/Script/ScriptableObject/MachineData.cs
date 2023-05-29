@@ -15,6 +15,8 @@ public class MachineData : ScriptableObject
     public int numberCoffee;
     public Vector3 position;
 
+    public float upgradePrice;
+
     public Vector3[] coffeePositions;
 
     public void Spawn(int indexMachine)
