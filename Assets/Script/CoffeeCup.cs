@@ -18,7 +18,6 @@ public class CoffeeCup : MonoBehaviour
     void Start()
     {
         coffee.list.Clear();
-        coffee.money = GameObject.FindGameObjectWithTag("Manager").GetComponent<Money>();
         coffee.isPresent = false;
 
         for (int i = 0;i<4;i++)

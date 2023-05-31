@@ -32,7 +32,6 @@ public class Selection : MonoBehaviour
                 highlight.GetComponent<MeshRenderer>().sharedMaterial = originalMaterialHighlight;
             }
             highlight = null;
-            //Debug.Log("materiel récup");
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) //Make sure you have EventSystem in the hierarchy before using EventSystem
@@ -84,7 +83,6 @@ public class Selection : MonoBehaviour
                 if (selection != null)
                 {
                     machine = selection.gameObject.transform.parent.parent.GetComponent<Machine>();
-                    Debug.Log(machine);
                     machine.upgrade.enabled = true;
                     try
                     {
@@ -94,8 +92,6 @@ public class Selection : MonoBehaviour
                     {
                         machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerCoffee, machine.machine[machine.machineLvl].numberCoffee, 0);
                     }
-                    
-                    Debug.Log(machine.upgrade.enabled);
                 }
                 try
                 {

@@ -31,6 +31,9 @@ public class Machine : MonoBehaviour
 
     private int numberHierarchy = 0;
 
+    private Money money;
+    public float reSellFee;
+
     public int machineIndex;
 
     public Canvas upgrade;
@@ -39,6 +42,8 @@ public class Machine : MonoBehaviour
 
     void Start()
     {
+        money = GameObject.FindGameObjectWithTag("Manager").GetComponent<Money>();
+        coffeeData.money = money;
         upgrade.enabled = false;
         if (machine != null && machineOn)
         {
@@ -46,11 +51,8 @@ public class Machine : MonoBehaviour
             coffeeCup = transform.GetChild(numberHierarchy).GetChild(0).GetComponent<CoffeeCup>();
             coffeeCup.coffee = coffeeData;
             present = true;
-            Debug.Log("spawned");
 
             model = coffeeData.model;
-
-            Debug.Log("instance prete" + machine[machineLvl].coffeePositions[0]);
 
             upgradeMenu = upgrade.GetComponent<UpgradeMenu>();
 
@@ -108,34 +110,60 @@ public class Machine : MonoBehaviour
 
     void CoffeeSpawn()
     {
-        Debug.Log(machine[machineLvl]);
         coffeeCup.coffee.CoffeeSpawn(machine[machineLvl], transform, coffeeCup.index, model);
     }
 
     public void UpgradeMachine()
     {
-        DeleteMachine();
-        Debug.Log("deleted");
-        machineLvl += 1;
         try
         {
-            SetMachine();
-            Debug.Log("upgraded");
-            try
+            if (machine[machineLvl + 1].upgradePrice <= money.money)
             {
-                upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerCoffee, machine[machineLvl].numberCoffee, machine[machineLvl + 1].upgradePrice);
+
+                DeleteMachine();
+                machineLvl += 1;
+                try
+                {
+                    SetMachine();
+                    Debug.Log("upgraded");
+                    try
+                    {
+                        upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerCoffee, machine[machineLvl].numberCoffee, machine[machineLvl + 1].upgradePrice);
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerCoffee, machine[machineLvl].numberCoffee, 0);
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    machineLvl -= 1;
+                    SetMachine();
+                }
+                money.AddMoney(0 - machine[machineLvl].upgradePrice);
             }
-            catch (IndexOutOfRangeException)
+            else
             {
-                upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerCoffee, machine[machineLvl].numberCoffee, 0);
+                Debug.Log("not enough money");
             }
         }
-        catch (IndexOutOfRangeException)
+        catch
         {
             Debug.Log("machine Lvl max");
-            machineLvl -= 1;
-            SetMachine();
         }
+    }
+
+    public void SellMachine()
+    {
+        DeleteMachine();
+        present = false;
+        deleted = true;
+        machineOn = false;
+        for (int i = 0; i <= machineLvl; i++)
+        {
+            money.money += reSellFee * (machine[i].upgradePrice);
+        }
+        machineLvl = 0;
     }
 
     public void CloseMenu()
@@ -146,8 +174,6 @@ public class Machine : MonoBehaviour
     //Select the new machine once it's upgrade, more simple to close the menu after that
     public void SelectNew()
     {
-        Debug.Log(transform);
-        Debug.Log(select);
         select.highlight = transform.GetChild(0).GetChild(0);
         select.selection = transform.GetChild(0).GetChild(0);
     }

@@ -26,11 +26,9 @@ public class CoffeeData : ScriptableObject
 
     public void CoffeeSpawn(MachineData machine, Transform transform, int j, GameObject model)
     {
-        Debug.Log(machine.coffeePositions[0]);
         for (int i = 0; i < machine.numberCoffee; i++)
         {
-            Vector3 a = transform.Find("MachineSupport").transform.position + new Vector3(machine.coffeePositions[i][0], YSize, machine.coffeePositions[i][2]);
-            Debug.Log(a);
+            //Vector3 a = transform.Find("MachineSupport").transform.position + new Vector3(machine.coffeePositions[i][0], YSize, machine.coffeePositions[i][2]);
             Instantiate(model, transform.Find("MachineSupport").transform.position
                 + new Vector3(machine.coffeePositions[i][0], YSize, machine.coffeePositions[i][2]), Quaternion.Euler(0, 0, 0), transform.Find("MachineSupport"));
         }
