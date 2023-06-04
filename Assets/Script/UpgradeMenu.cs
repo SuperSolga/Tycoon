@@ -19,9 +19,9 @@ public class UpgradeMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        upText = transform.GetChild(1).GetComponent<Text>();
-        properties = transform.GetChild(2).GetComponent<Text>();
-        upgradeButton = transform.GetChild(3).GetComponent<Button>();
+        upText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        properties = transform.GetChild(0).GetChild(1).GetComponent<Text>();
+        upgradeButton = transform.GetChild(0).GetChild(2).GetChild(1).GetComponent<Button>();
 
         speed = properties.transform.GetChild(0).GetComponent<Text>();
         numberCoffee = properties.transform.GetChild(1).GetComponent<Text>();
@@ -42,5 +42,10 @@ public class UpgradeMenu : MonoBehaviour
         {
             upgradeButtonText.text = "UPGRADE : Last upgrade";
         }
+    }
+
+    public void MarketMenu()
+    {
+        
     }
 }

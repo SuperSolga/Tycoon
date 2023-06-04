@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class CoffeeData : ScriptableObject
 {
     public float price;
+    public int maxDosette;
     public GameObject model;
 
     public float size;
@@ -17,7 +18,7 @@ public class CoffeeData : ScriptableObject
     [HideInInspector]
     public bool isPresent = false;
     [HideInInspector]
-    public Money money;
+    public GameManager gameManager;
     public List<GameObject> list;
     public bool[] tested = new bool[4];
 
@@ -41,7 +42,7 @@ public class CoffeeData : ScriptableObject
         if (trans.transform.position.x < -10)
             {
                 Destroy(coffeeeCup);
-                money.AddMoney(price);
+                gameManager.AddMoney(price);
          }
      }
 }
