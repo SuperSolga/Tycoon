@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 public class CoffeeData : ScriptableObject
 {
     public float price;
-    public int maxDosette;
     public GameObject model;
 
     public float size;

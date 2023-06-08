@@ -58,7 +58,7 @@ public class Machine : MonoBehaviour
             SetMachine();
             coffeeCup = transform.GetChild(numberHierarchy).GetChild(0).GetComponent<CoffeeCup>();
             coffeeCup.coffee = coffeeData;
-            dosette = coffeeData.maxDosette;
+            //dosette = machine[machineLvl].maxDosette;
             present = true;
 
             model = coffeeData.model;
@@ -184,7 +184,17 @@ public class Machine : MonoBehaviour
 
     public void Refill()
     {
-        dosette = coffeeData.maxDosette;
+        if (gameManager.stock-machine[machineLvl].maxDosette - dosette >= 0)
+        {
+            Debug.Log(dosette);
+            gameManager.stock -= (machine[machineLvl].maxDosette - dosette);
+            dosette  += (machine[machineLvl].maxDosette - dosette);
+            Debug.Log(dosette);
+        } else
+        {
+            dosette += gameManager.stock;
+            gameManager.stock = 0;
+        }
     }
 
     public void CloseMenu()

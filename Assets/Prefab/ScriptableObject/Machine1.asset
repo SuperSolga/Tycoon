@@ -19,6 +19,7 @@ MonoBehaviour:
   timePerCoffee: 10
   numberCoffee: 1
   position: {x: 0, y: 0.35, z: 0}
+  maxDosette: 10
   upgradePrice: 250
   coffeePositions:
   - {x: -0.5, y: 0, z: 0}

@@ -16,6 +16,7 @@ public class UpgradeMenu : MonoBehaviour
 
     private Text upgradeButtonText;
 
+
     // Start is called before the first frame update
     void Start()
     {
