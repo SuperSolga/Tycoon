@@ -44,9 +44,4 @@ public class UpgradeMenu : MonoBehaviour
             upgradeButtonText.text = "UPGRADE : Last upgrade";
         }
     }
-
-    public void MarketMenu()
-    {
-        
-    }
 }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int stock;
     public float money = 0f;
 
+    public Canvas uiBase;
     public Canvas market;
 
     #endregion;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        uiBase.enabled= true;
         market.enabled = false;
     }
 
@@ -44,11 +46,13 @@ public class GameManager : MonoBehaviour
 
     public void OpenMarket()
     {
+        uiBase.enabled = false;
         market.enabled = true;
     }
 
     public void CloseMarket()
     {
+        uiBase.enabled = true;
         market.enabled = false;
     }
 }
