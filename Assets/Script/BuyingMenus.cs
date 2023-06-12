@@ -23,8 +23,10 @@ public class BuyingMenus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        capsuleMarket.enabled = true;
-        machineMarket.enabled = false;
+        capsuleMarket.enabled= true;
+        machineMarket.enabled= false;
+        capsuleButton.interactable = false;
+        machineButton.interactable = true;
     }
 
     // Update is called once per frame
@@ -39,11 +41,15 @@ public class BuyingMenus : MonoBehaviour
         {
             capsuleMarket.enabled= true;
             machineMarket.enabled= false;
+            capsuleButton.interactable = false;
+            machineButton.interactable = true;
         }
-        else if (type == "machine")
+        else if (type == "machine") 
         {
             capsuleMarket.enabled= false;
             machineMarket.enabled= true;
+            capsuleButton.interactable = true;
+            machineButton.interactable = false;
         }
     }
 }

@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
     {
         stock += capsule;
         float price = Mathf.Round(0.0001f * Mathf.Pow(capsule, 3) - 0.0089f * Mathf.Pow(capsule, 2) + 1.0283f * capsule - 0.0195f -0.1f);
-        Debug.Log(price);
         AddMoney(-price);
     }
 
