@@ -15,6 +15,8 @@ public class MachineData : ScriptableObject
     public int numberCoffee;
     public Vector3 position;
 
+    public int maxDosette;
+
     public float upgradePrice;
 
     public Vector3[] coffeePositions;
