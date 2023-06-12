@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfed65681a403547a9851b99bb2f876, type: 3}
   m_Name: Machine1
   m_EditorClassIdentifier: 
-  machineName: Machine1
+  machineName: awp mid
   level: 0
   color: {fileID: 2100000, guid: bbf65bbcf84011645a7055838deedcdb, type: 2}
   model: {fileID: 7422380060765005593, guid: 636ffc0fa177d66429f7acad8a091521, type: 3}
