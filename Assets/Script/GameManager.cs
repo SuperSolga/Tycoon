@@ -11,29 +11,45 @@ public class GameManager : MonoBehaviour
     public int stock;
     public float money = 0f;
 
+    public int coffeeLvl;
+
     public Canvas uiBase;
     public Canvas market;
 
     #endregion;
+    [Header("Coffee Management")]
+    public CoffeeData[] coffeeTypeStock;
 
-    public Text Textmoney;
+    [Header("Money Management")]
+    public Text[] Textmoney;
     public Text TextCapsule;
 
     private void Start()
     {
         uiBase.enabled= true;
-        market.enabled = false;
+        market.enabled= true;
+        uiBase.gameObject.SetActive(true);
+        market.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        Textmoney.text = "MONEY : " + money;
+        for (int i = 0;i < Textmoney.Length; i++)
+        {
+            Textmoney[i].text = "Money : " + money;
+        }
         TextCapsule.text = "Capsule Stock : " + stock;
     }
 
     public void AddMoney(float amount)
     {
-        money += amount;
+        if (money < -amount)
+        {
+            Debug.Log("not enough money");
+        } else
+        {
+            money += amount;
+        }
     }
 
     public void BuyCapsule(int capsule)
@@ -45,13 +61,34 @@ public class GameManager : MonoBehaviour
 
     public void OpenMarket()
     {
-        uiBase.enabled = false;
-        market.enabled = true;
+        uiBase.gameObject.SetActive(false);
+        market.gameObject.SetActive(true);
     }
 
     public void CloseMarket()
     {
-        uiBase.enabled = true;
-        market.enabled = false;
+        uiBase.gameObject.SetActive(true);
+        market.gameObject.SetActive(false);
+    }
+
+    public void UpgradeCoffee(int lvl)
+    {
+        coffeeLvl = lvl;
+    }
+
+    public int Search(CoffeeData coffeeType)
+    {
+        int a = 0;
+        for (int i = 0; i < coffeeTypeStock.Length; i++)
+        {
+            if (coffeeTypeStock[i] != coffeeType)
+            {
+                a++;
+            } else
+            {
+                return a;
+            }
+        }
+        return 45;
     }
 }

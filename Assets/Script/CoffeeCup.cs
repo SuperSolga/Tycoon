@@ -17,6 +17,8 @@ public class CoffeeCup : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(coffee);
+        Debug.Log(coffee.YSize);
         coffee.list.Clear();
         coffee.isPresent = false;
 

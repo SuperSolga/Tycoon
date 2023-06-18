@@ -53,6 +53,7 @@ public class Machine : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         coffeeData.gameManager = gameManager;
         upgrade.enabled = false;
+        coffeeData = gameManager.coffeeTypeStock[gameManager.coffeeLvl];
         if (machine != null && machineOn)
         {
             SetMachine();
@@ -80,12 +81,12 @@ public class Machine : MonoBehaviour
 
         if (machine != null && machineOn && !present)
         {
-            Debug.Log("en spawn !");
             SetMachine();
             upgradeMenu = upgrade.GetComponent<UpgradeMenu>();
             select = GameObject.FindGameObjectWithTag("Manager").GetComponent<Selection>();
             present = true;
             deleted = false;
+            coffeeCup.coffee = coffeeData;
             transform.GetChild(numberHierarchy).GetChild(transform.GetChild(numberHierarchy).childCount - 1).SetSiblingIndex(0);
 
         }
@@ -123,6 +124,7 @@ public class Machine : MonoBehaviour
         {
             coffeeCup.coffee.CoffeeSpawn(machine[machineLvl], transform, coffeeCup.index, model);
             dosette--;
+            upgradeMenu.slider.value = dosette;
         } else
         {
             Debug.Log("not enough coffee in the machine");
@@ -168,6 +170,17 @@ public class Machine : MonoBehaviour
             Debug.Log("machine Lvl max");
         }
     }
+    public void BuyMachine()
+    {
+        if(gameManager.money >= machine[0].upgradePrice)
+        { 
+            machineOn = true;
+            gameManager.money  -= machine[0].upgradePrice;
+        } else
+        {
+            Debug.Log("poor");
+        }
+    }
 
     public void SellMachine()
     {
@@ -186,10 +199,9 @@ public class Machine : MonoBehaviour
     {
         if (gameManager.stock-machine[machineLvl].maxDosette - dosette >= 0)
         {
-            Debug.Log(dosette);
             gameManager.stock -= (machine[machineLvl].maxDosette - dosette);
             dosette  += (machine[machineLvl].maxDosette - dosette);
-            Debug.Log(dosette);
+            upgradeMenu.slider.value = dosette;
         } else
         {
             dosette += gameManager.stock;
@@ -207,5 +219,17 @@ public class Machine : MonoBehaviour
     {
         select.highlight = transform.GetChild(0).GetChild(0);
         select.selection = transform.GetChild(0).GetChild(0);
+    }
+
+    public void ChangeCoffeeTypee(CoffeeData coffeeType)
+    {
+        if (gameManager.Search(coffeeType) <= gameManager.coffeeLvl)
+        {
+            Debug.Log("ok pour machine n°" + machineIndex);
+            coffeeData = coffeeType;
+        } else
+        {
+            Debug.Log("pas ok pour machine n°" + machineIndex);
+        }
     }
 }

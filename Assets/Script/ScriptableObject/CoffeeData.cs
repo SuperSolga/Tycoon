@@ -28,7 +28,7 @@ public class CoffeeData : ScriptableObject
     {
         for (int i = 0; i < machine.numberCoffee; i++)
         {
-            //Vector3 a = transform.Find("MachineSupport").transform.position + new Vector3(machine.coffeePositions[i][0], YSize, machine.coffeePositions[i][2]);
+            Debug.Log(YSize);
             Instantiate(model, transform.Find("MachineSupport").transform.position
                 + new Vector3(machine.coffeePositions[i][0], YSize, machine.coffeePositions[i][2]), Quaternion.Euler(0, 0, 0), transform.Find("MachineSupport"));
         }
