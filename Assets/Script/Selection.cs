@@ -86,11 +86,11 @@ public class Selection : MonoBehaviour
                     machine.upgrade.enabled = true;
                     try
                     {
-                        machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerCoffee, machine.machine[machine.machineLvl].numberCoffee, machine.machine[machine.machineLvl + 1].upgradePrice);
+                        machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerItem, machine.machine[machine.machineLvl].numberItem, machine.machine[machine.machineLvl + 1].upgradePrice);
                     }
                     catch (IndexOutOfRangeException)
                     {
-                        machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerCoffee, machine.machine[machine.machineLvl].numberCoffee, 0);
+                        machine.upgradeMenu.GetSelected(machine.machineIndex, machine.machine[machine.machineLvl].timePerItem, machine.machine[machine.machineLvl].numberItem, 0);
                     }
                 }
                 try

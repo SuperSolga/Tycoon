@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bfed65681a403547a9851b99bb2f876, type: 3}
-  m_Name: Machine2
+  m_Name: Machine1
   m_EditorClassIdentifier: 
-  machineName: Machine2
-  level: 2
-  color: {fileID: 2100000, guid: ba49b01076980ad4aacedc917f000e25, type: 2}
-  model: {fileID: 299271095857935772, guid: 3759eca0892372b4781d953c37900087, type: 3}
-  timePerCoffee: 5
-  numberCoffee: 1
+  machineName: Machine1
+  level: 1
+  model: {fileID: 7422380060765005593, guid: 636ffc0fa177d66429f7acad8a091521, type: 3}
+  timePerItem: 10
+  numberItem: 1
   position: {x: 0, y: 0.35, z: 0}
-  maxDosette: 20
-  upgradePrice: 500
-  coffeePositions:
+  maxDosette: 10
+  upgradePrice: 250
+  itemPositions:
   - {x: -0.5, y: 0, z: 0}

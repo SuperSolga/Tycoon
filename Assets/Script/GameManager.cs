@@ -16,13 +16,23 @@ public class GameManager : MonoBehaviour
     public Canvas uiBase;
     public Canvas market;
 
+    private int timer;
+    public int goaledTimer;
+
     #endregion;
+
+    #region Other Variable
     [Header("Coffee Management")]
     public CoffeeData[] coffeeTypeStock;
+    [Header("Machine Management")]
+    public MachineData[] machineType;
+    [HideInInspector]
+    public int[] coffeeCommand;
 
     [Header("Money Management")]
     public Text[] Textmoney;
     public Text TextCapsule;
+    #endregion
 
     private void Start()
     {
@@ -30,6 +40,8 @@ public class GameManager : MonoBehaviour
         market.enabled= true;
         uiBase.gameObject.SetActive(true);
         market.gameObject.SetActive(false);
+
+        InvokeRepeating("TimerUpdate", 0, 1);
     }
 
     private void Update()
@@ -90,5 +102,16 @@ public class GameManager : MonoBehaviour
             }
         }
         return 45;
+    }
+
+    void TimerUpdate()
+    {
+        timer += 1;
+        if (timer == goaledTimer)
+        {
+            print("c'est bon");
+            AddMoney(100);
+            timer = 0;
+        }
     }
 }

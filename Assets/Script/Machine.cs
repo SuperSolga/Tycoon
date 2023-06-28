@@ -16,6 +16,7 @@ public class Machine : MonoBehaviour
     private bool present = false;
     private bool deleted = false;
 
+    [HideInInspector]
     public MachineData[] machine;
     public int machineLvl;
 
@@ -52,6 +53,7 @@ public class Machine : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         coffeeData.gameManager = gameManager;
+        machine = gameManager.machineType;
         upgrade.enabled = false;
         coffeeData = gameManager.coffeeTypeStock[gameManager.coffeeLvl];
         if (machine != null && machineOn)
@@ -105,7 +107,7 @@ public class Machine : MonoBehaviour
     void SetMachine()
     {
         machine[machineLvl].Spawn(machineIndex);
-        InvokeRepeating("CoffeeSpawn", startTimer, machine[machineLvl].timePerCoffee);
+        InvokeRepeating("CoffeeSpawn", startTimer, machine[machineLvl].timePerItem);
         coffeeCup = transform.GetChild(numberHierarchy).GetChild(0).GetComponent<CoffeeCup>();
     }
 
@@ -146,11 +148,11 @@ public class Machine : MonoBehaviour
                     Debug.Log("upgraded");
                     try
                     {
-                        upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerCoffee, machine[machineLvl].numberCoffee, machine[machineLvl + 1].upgradePrice);
+                        upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerItem, machine[machineLvl].numberItem, machine[machineLvl + 1].upgradePrice);
                     }
                     catch (IndexOutOfRangeException)
                     {
-                        upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerCoffee, machine[machineLvl].numberCoffee, 0);
+                        upgradeMenu.GetSelected(machineIndex, machine[machineLvl].timePerItem, machine[machineLvl].numberItem, 0);
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -190,7 +192,7 @@ public class Machine : MonoBehaviour
         machineOn = false;
         for (int i = 0; i <= machineLvl; i++)
         {
-            gameManager.money += reSellFee * (machine[i].upgradePrice);
+            gameManager.money += reSellFee * machine[i].upgradePrice;
         }
         machineLvl = 0;
     }
@@ -199,8 +201,8 @@ public class Machine : MonoBehaviour
     {
         if (gameManager.stock-machine[machineLvl].maxDosette - dosette >= 0)
         {
-            gameManager.stock -= (machine[machineLvl].maxDosette - dosette);
-            dosette  += (machine[machineLvl].maxDosette - dosette);
+            gameManager.stock -= machine[machineLvl].maxDosette - dosette;
+            dosette  += machine[machineLvl].maxDosette - dosette;
             upgradeMenu.slider.value = dosette;
         } else
         {
