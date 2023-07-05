@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "CoffeeData", menuName = "Tycoon/Coffee")]
+[CreateAssetMenu(fileName = "ItemData", menuName = "Tycoon/Item")]
 
-public class CoffeeData : ScriptableObject
+public class ItemData : ScriptableObject
 {
     public float price;
     public GameObject model;
@@ -24,7 +24,7 @@ public class CoffeeData : ScriptableObject
     public float YSize;
 
 
-    public void CoffeeSpawn(MachineData machine, Transform transform, int j, GameObject model)
+    public void Spawn(MachineData machine, Transform transform, int j, GameObject model)
     {
         for (int i = 0; i < machine.numberItem; i++)
         {

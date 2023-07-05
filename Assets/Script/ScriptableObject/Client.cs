@@ -8,5 +8,7 @@ public class Client : ScriptableObject
     public GameObject model;
     public float timer;
 
+    public string[] command;
+
 
 }

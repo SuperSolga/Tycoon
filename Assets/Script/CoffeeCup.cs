@@ -8,7 +8,7 @@ using UnityEngine;
 public class CoffeeCup : MonoBehaviour
 {
     [HideInInspector]
-    public CoffeeData coffee;
+    public ItemData coffee;
 
     public int index;
     private int numberCoffee;

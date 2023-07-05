@@ -18,14 +18,18 @@ public class GameManager : MonoBehaviour
 
     private int timer;
     public int goaledTimer;
+    public float moneyPerInvest;
 
     #endregion;
 
     #region Other Variable
-    [Header("Coffee Management")]
-    public CoffeeData[] coffeeTypeStock;
+    [Header("Item Management")]
+    public ItemData[] coffeeTypeStock;
+    public ItemData[] waffleTypeStock;
+
     [Header("Machine Management")]
-    public MachineData[] machineType;
+    public MachineData[] coffeeMachineStock;
+    public MachineData[] waffleMachineStock;
     [HideInInspector]
     public int[] coffeeCommand;
 
@@ -88,7 +92,7 @@ public class GameManager : MonoBehaviour
         coffeeLvl = lvl;
     }
 
-    public int Search(CoffeeData coffeeType)
+    public int Search(ItemData coffeeType)
     {
         int a = 0;
         for (int i = 0; i < coffeeTypeStock.Length; i++)
@@ -110,8 +114,13 @@ public class GameManager : MonoBehaviour
         if (timer == goaledTimer)
         {
             print("c'est bon");
-            AddMoney(100);
+            AddMoney(moneyPerInvest);
             timer = 0;
         }
+    }
+
+    public void DisableButton(Button button)
+    {
+        button.enabled = false;
     }
 }

@@ -17,15 +17,17 @@ public class Machine : MonoBehaviour
     private bool deleted = false;
 
     [HideInInspector]
+    public MachineData[] coffeeMachine, waffleMachine, iceMachine;
+    [HideInInspector]
     public MachineData[] machine;
     public int machineLvl;
 
     GameObject model;
     #endregion
 
-    #region Coffee related variables
+    #region Item related variables
     private CoffeeCup coffeeCup;
-    public CoffeeData coffeeData;
+    public ItemData coffeeData;
     private int dosette;
     #endregion
 
@@ -42,6 +44,7 @@ public class Machine : MonoBehaviour
     #endregion
 
     public int machineIndex;
+    public string type;
 
     #region Menu related variables
     public Canvas upgrade;
@@ -53,7 +56,16 @@ public class Machine : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         coffeeData.gameManager = gameManager;
-        machine = gameManager.machineType;
+        coffeeMachine = gameManager.coffeeMachineStock;
+
+        if (type == "coffee")
+        {
+            machine = coffeeMachine;
+        } else if (type == "waffle")
+        {
+            machine = waffleMachine;
+        }
+
         upgrade.enabled = false;
         coffeeData = gameManager.coffeeTypeStock[gameManager.coffeeLvl];
         if (machine != null && machineOn)
@@ -61,7 +73,6 @@ public class Machine : MonoBehaviour
             SetMachine();
             coffeeCup = transform.GetChild(numberHierarchy).GetChild(0).GetComponent<CoffeeCup>();
             coffeeCup.coffee = coffeeData;
-            //dosette = machine[machineLvl].maxDosette;
             present = true;
 
             model = coffeeData.model;
@@ -107,7 +118,7 @@ public class Machine : MonoBehaviour
     void SetMachine()
     {
         machine[machineLvl].Spawn(machineIndex);
-        InvokeRepeating("CoffeeSpawn", startTimer, machine[machineLvl].timePerItem);
+        InvokeRepeating("Spawn", startTimer, machine[machineLvl].timePerItem);
         coffeeCup = transform.GetChild(numberHierarchy).GetChild(0).GetComponent<CoffeeCup>();
     }
 
@@ -120,11 +131,12 @@ public class Machine : MonoBehaviour
         }
     }
 
-    void CoffeeSpawn()
+    //Make a new item spawn, at the rate decided with "time per Item", and
+    void Spawn()
     {
         if (dosette > 0)
         {
-            coffeeCup.coffee.CoffeeSpawn(machine[machineLvl], transform, coffeeCup.index, model);
+            coffeeCup.coffee.Spawn(machine[machineLvl], transform, coffeeCup.index, model);
             dosette--;
             upgradeMenu.slider.value = dosette;
         } else
@@ -133,6 +145,7 @@ public class Machine : MonoBehaviour
         }
     }
 
+    //Try to upgrade the machine, check the money and the level and act as consequences of these checks
     public void UpgradeMachine()
     {
         try
@@ -172,6 +185,8 @@ public class Machine : MonoBehaviour
             Debug.Log("machine Lvl max");
         }
     }
+
+    //Try to buy a new machine, if there is enough money, if not, return an error, if it can, a new machine spawn and money is deduced
     public void BuyMachine()
     {
         if(gameManager.money >= machine[0].upgradePrice)
@@ -184,6 +199,7 @@ public class Machine : MonoBehaviour
         }
     }
 
+    //Sell the machine, delete it from the scene, and stop all coffee spawn
     public void SellMachine()
     {
         DeleteMachine();
@@ -197,6 +213,7 @@ public class Machine : MonoBehaviour
         machineLvl = 0;
     }
 
+    //Try to refill the machine at its maximum, if it can't, put the amount of dosette in the reserve and adapt the slider that represent the stock in the machine
     public void Refill()
     {
         if (gameManager.stock-machine[machineLvl].maxDosette - dosette >= 0)
@@ -211,6 +228,7 @@ public class Machine : MonoBehaviour
         }
     }
 
+    //Close the menu of machine upgrade
     public void CloseMenu()
     {
         upgrade.enabled= false;
@@ -223,7 +241,8 @@ public class Machine : MonoBehaviour
         select.selection = transform.GetChild(0).GetChild(0);
     }
 
-    public void ChangeCoffeeTypee(CoffeeData coffeeType)
+    //Try to change the type of coffee that the machine produces, return an error if this type is not unlocked
+    public void ChangeCoffeeTypee(ItemData coffeeType)
     {
         if (gameManager.Search(coffeeType) <= gameManager.coffeeLvl)
         {

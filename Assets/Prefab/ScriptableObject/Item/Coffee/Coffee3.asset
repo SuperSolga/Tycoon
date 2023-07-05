@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c605f9f34ffca4e8179fc1b3c6bdc7, type: 3}
-  m_Name: Coffeelvl3
+  m_Script: {fileID: 11500000, guid: 1bb02192446205041bf36f0bc2004afb, type: 3}
+  m_Name: Coffee3
   m_EditorClassIdentifier: 
-  price: 4
+  price: 3
   model: {fileID: 5365582243053187142, guid: 787352c0453ac7e4a8457514f12546d7, type: 3}
   size: 0
   conveyorSpeed: 1
-  isPresent: 1
-  money: {fileID: 0}
+  isPresent: 0
+  gameManager: {fileID: 0}
   list: []
   tested: 00000000
-  YSize: 0.122
+  YSize: 0
