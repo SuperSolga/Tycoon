@@ -8,7 +8,7 @@ using UnityEngine;
 public class CoffeeCup : MonoBehaviour
 {
     [HideInInspector]
-    public CoffeeData coffee;
+    public ItemData coffee;
 
     public int index;
     private int numberCoffee;
@@ -17,6 +17,8 @@ public class CoffeeCup : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(coffee);
+        Debug.Log(coffee.YSize);
         coffee.list.Clear();
         coffee.isPresent = false;
 

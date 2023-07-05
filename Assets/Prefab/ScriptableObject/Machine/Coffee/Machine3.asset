@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineName: 
   level: 0
-  color: {fileID: 0}
   model: {fileID: 272866766053771366, guid: 85725e9b316054f4a906c06697914f8d, type: 3}
-  timePerCoffee: 5
-  numberCoffee: 2
+  timePerItem: 5
+  numberItem: 2
   position: {x: -0.077, y: 0.35, z: 0}
   maxDosette: 30
   upgradePrice: 1000
-  coffeePositions:
-  - {x: -0.5, y: 1, z: 0.15}
-  - {x: -0.5, y: 1, z: -0.15}
+  itemPositions:
+  - {x: -0.5, y: 0, z: -0.75}
+  - {x: -0.5, y: 0, z: 0.75}

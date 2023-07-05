@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UpgradeMenu : MonoBehaviour
 {
+    public Slider slider;
 
     private Text upText;
     private Text properties;
@@ -20,6 +21,9 @@ public class UpgradeMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        slider = transform.GetChild(0).GetChild(1).GetChild(2).GetComponent<Slider>();
+        slider.value= 0;
+
         upText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
         properties = transform.GetChild(0).GetChild(1).GetComponent<Text>();
         upgradeButton = transform.GetChild(0).GetChild(2).GetChild(1).GetComponent<Button>();

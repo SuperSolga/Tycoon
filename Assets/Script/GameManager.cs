@@ -11,29 +11,61 @@ public class GameManager : MonoBehaviour
     public int stock;
     public float money = 0f;
 
+    public int coffeeLvl;
+
     public Canvas uiBase;
     public Canvas market;
 
+    private int timer;
+    public int goaledTimer;
+    public float moneyPerInvest;
+
     #endregion;
 
-    public Text Textmoney;
+    #region Other Variable
+    [Header("Item Management")]
+    public ItemData[] coffeeTypeStock;
+    public ItemData[] waffleTypeStock;
+
+    [Header("Machine Management")]
+    public MachineData[] coffeeMachineStock;
+    public MachineData[] waffleMachineStock;
+    [HideInInspector]
+    public int[] coffeeCommand;
+
+    [Header("Money Management")]
+    public Text[] Textmoney;
     public Text TextCapsule;
+    #endregion
 
     private void Start()
     {
         uiBase.enabled= true;
-        market.enabled = false;
+        market.enabled= true;
+        uiBase.gameObject.SetActive(true);
+        market.gameObject.SetActive(false);
+
+        InvokeRepeating("TimerUpdate", 0, 1);
     }
 
     private void Update()
     {
-        Textmoney.text = "MONEY : " + money;
+        for (int i = 0;i < Textmoney.Length; i++)
+        {
+            Textmoney[i].text = "Money : " + money;
+        }
         TextCapsule.text = "Capsule Stock : " + stock;
     }
 
     public void AddMoney(float amount)
     {
-        money += amount;
+        if (money < -amount)
+        {
+            Debug.Log("not enough money");
+        } else
+        {
+            money += amount;
+        }
     }
 
     public void BuyCapsule(int capsule)
@@ -45,13 +77,50 @@ public class GameManager : MonoBehaviour
 
     public void OpenMarket()
     {
-        uiBase.enabled = false;
-        market.enabled = true;
+        uiBase.gameObject.SetActive(false);
+        market.gameObject.SetActive(true);
     }
 
     public void CloseMarket()
     {
-        uiBase.enabled = true;
-        market.enabled = false;
+        uiBase.gameObject.SetActive(true);
+        market.gameObject.SetActive(false);
+    }
+
+    public void UpgradeCoffee(int lvl)
+    {
+        coffeeLvl = lvl;
+    }
+
+    public int Search(ItemData coffeeType)
+    {
+        int a = 0;
+        for (int i = 0; i < coffeeTypeStock.Length; i++)
+        {
+            if (coffeeTypeStock[i] != coffeeType)
+            {
+                a++;
+            } else
+            {
+                return a;
+            }
+        }
+        return 45;
+    }
+
+    void TimerUpdate()
+    {
+        timer += 1;
+        if (timer == goaledTimer)
+        {
+            print("c'est bon");
+            AddMoney(moneyPerInvest);
+            timer = 0;
+        }
+    }
+
+    public void DisableButton(Button button)
+    {
+        button.enabled = false;
     }
 }

@@ -9,17 +9,16 @@ public class MachineData : ScriptableObject
 
     public string machineName;
     public int level;
-    public Material color;
     public GameObject model;
-    public float timePerCoffee;
-    public int numberCoffee;
+    public float timePerItem;
+    public int numberItem;
     public Vector3 position;
 
     public int maxDosette;
 
     public float upgradePrice;
 
-    public Vector3[] coffeePositions;
+    public Vector3[] itemPositions;
 
     public void Spawn(int indexMachine)
     {
